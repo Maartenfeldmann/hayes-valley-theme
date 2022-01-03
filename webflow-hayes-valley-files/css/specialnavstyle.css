@@ -1,0 +1,369 @@
+
+/* containter base style
+Hieronder heb ik geprobeerd om alle elementen een unieke ID te geven, zodat ze per element uniek gestyled kunnen worden. Het idee is om te voorkomen dat bepaalde style elementen van andere elementen worden inherited, zodat je minder controle hebt over de styling, maar dit blijkt maar bepert te werken. Deze CSS werkt daarom niet voed. Beter is om via inspect in Google Chrome te kijken waar de styling verkeerd gaat, en deze te overrulen met je eigen styling.*/
+
+/*
+*{
+    font-family: verdana;
+    margin: 0;
+}
+
+#nav1bakels {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#div1bakels {
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* menu base styles 
+
+#nav1bakels {
+    background: #333;
+}
+
+ #ul1bakels {
+     list-style-type: none;
+     padding: 0;
+     max-height: 40px;
+ }
+ 
+/*
+ #stylingofulfornav {
+    list-style-type: none;
+     padding: 0;
+ }
+ 
+
+ #nav1bakels a {
+     text-decoration: none;
+     text-align: center;
+     color: #fff;
+     display: block;
+     padding: 10px;
+ }
+
+ #nav1bakels a:hover {
+     background-color: #555;
+ }
+/* social menu base styles 
+
+a.tw {
+    background: url('tw.png') no-repeat center;
+    background-size: 80%;
+}
+
+a.fb {
+    background: url('fb.png') no-repeat center;
+    background-size: 80%;
+}
+
+#ul2bakels a {
+    text-indent: -10000px;
+}
+ #ul2bakels {
+     max-width: 80px;
+     margin: 0 auto;
+ }
+
+
+/* flex styles 
+
+#ul2bakels {
+    flex: 1 1 0;
+    display: flex;
+}
+
+#ul2bakels li {
+    flex: 1 1 0;
+}
+
+
+@media screen and (min-width: 768px) {
+
+    #ul1bakels {
+        display: flex;
+        justify-content: flex-end;
+        max-height: 40px;
+    }
+
+    #ul1bakels li {
+        flex: 1 1 0;
+    }
+
+    #nav1bakels {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    #ul2bakels {
+        margin: 0;
+    }
+    
+}
+
+-->
+
+/*scheiding
+
+----------------------------------------------------
+/* containter base style De CSS hieronder werkt goed. Hieronder de wijze waarop de NetNinja het heeft aanbevolen, maar met wat eigen styling en classe namen om inhereted styling te overrulen. Het gaat met name om de bottom-margin van de eerste UL; die wordt gezet op margin-bottom van 1.5em, terwijl dat niet de bedoeling is. Daarom is deze styling overruled door de margin-bottom expliciet op 0px te zetten (i.e. ul1 margin-bottom 0px.
+*{
+    font-family: verdana;
+    margin: 0;
+}
+
+nav.bakels {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.hayes-wrapper{
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* menu base styles 
+
+.hayes-wrapper nav {
+    background: #333;
+}
+
+ .hayes-wrapper nav ul {
+     list-style-type: none;
+     padding: 0;
+ }
+
+ .ul1 {
+     margin-bottom: 0px;
+ }
+ 
+/*
+ #stylingofulfornav {
+    list-style-type: none;
+     padding: 0;
+ }
+ 
+
+ .hayes-wrapper nav a {
+     text-decoration: none;
+     text-align: center;
+     color: #fff;
+     display: block;
+     padding: 10px;
+ }
+
+ .hayes-wrapper nav a:hover {
+     background-color: #555;
+ }
+/* social menu base styles 
+
+a.tw {
+    background: url('tw.png') no-repeat center;
+    background-size: 80%;
+}
+
+a.fb {
+    background: url('fb.png') no-repeat center;
+    background-size: 80%;
+}
+
+.ul2 a {
+    text-indent: -10000px;
+}
+ .ul2 {
+     max-width: 80px;
+     margin: 0 auto;
+ }
+
+
+/* flex styles 
+
+nav ul.ul2 {
+    flex: 1 1 0;
+    display: flex;
+}
+
+nav ul.ul2 li {
+    flex: 1 1 0;
+}
+
+<!--@media screen and (min-width: 768px) { zegt dus: onderstaande styling geldt voor alle screens die breder zijn dan 768px, voor smalle schermen val je dus terug op bovenstaande code -->
+
+
+@media screen and (min-width: 768px) {
+
+    .hayes-wrapper nav ul {
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: 0px;
+    }
+
+    .hayes-wrapper nav li {
+        flex: 1 1 0;
+    }
+
+    .hayes-wrapper nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 65.03px;
+    }
+
+    .ul2 {
+        margin: 0;
+    }
+    
+}
+*/
+/* nieuwe css voor nieuw nav menu gebaseerd op Hays Valey styling> Hieronder is bovenstaande styling aangepast naar Hayes Valley styling; er wordt dus flexbox gebruikt; de twee UL zijn flexbox elementen voor schermen groter dan 768px. Dat is gebeurt door op nav niveuw (hayes-wrapper nav {}) de display: flex; property te gebruiken voor grotere schermen, zodat de twee UL elementen binnen het nav element kwalificeren als een flex element. Ik heb overigens de class namen uniek gemaakt door "bakels" toe te voegen en te voorkomen dat er eventueel overlap is met namen uit de andere CSS files. 
+
+Dit betekent dus dat je deze elementen samen op 1 rij kunt krijgen indien het scherm dus groter is dan 768px (i.e. voor kleinere schermen zijn de twee UL's binnen de nav niet een flexbox property, waardoor ze dus niet op 1 rij komen, maar als block elementen onder elkaar terecht komen. Dus op grotere schermen komen de twee UL's naast elkaar op 1 rij, waardoor je ook beide elementen apart kan stylen (bijvoorbeeld het linker element helemaal naar links zetten, en het rechter element helemaal naar rechts). 
+
+Bij de tweede UL (ul2) wordt voor kleinere schermen (<768px) de elementen binnen deze UL als flexbox elementen aangemerkt. Dit betekend dat de twee LI's binnen deze UL-social horizontaal op 1 rij terechtkomen. Dit geld dus niet voor de eerste UL; daar geldt geen flexbox, waardoor deze LI elk op een aparte rij terechtkomen. 
+
+Voor grotere schermen zijn niet alleen de twee UL's flexbox elementen, maar ook alle LI's binnen dzee twee UL's. Dit betekent dat voor grotere schermen alle LI op 1 rij terechtkomen, waarbij de LI's per UL apart gestyled kunnen worden. 
+
+Omdat er toch sprake is van hinderlijke inheritence uit andere CSS files (webflow waarschijnlijk) heb ik expliciet aangegeven dat de margin-bottom 0px moet zijn. Daarnaast heb ik de hoogte van het nav element kunstmatig op height: 65.03px; moeten zetten, omdat ook hier de hoogte werd aangepast door inheritence. Deze hoogte blijkt door de originele webflow file te inspecten met google chrome. Ook heb ik de width van de hoogste div (hayes-wrapper) kunstmatig op 100% moeten zetten dit omdat de NetNinja andere waarden gebruikte. 
+
+daarnaast heb ik in ul2 de minimale breedte voor kleine schermen weggenomen (stond op 80px), waardoor die in kleine schermen nu de hele breedte in beslag nemen. Op breede schermen echter is de width van de li elementen veel te klein, onduidelijk waarom. 
+
+voorts heb ik in de UL-ul2 wat moeten aanpassen (UL2) dit omdat de flex door netninja was weggehaald voor grotere schermen, deze moest nu juist terugkomen, dus ik heb de elementen van UL2 ook flex elementen gemaakt. voorts heb ik dit moeten aanpassen naar justify-content: space-around; dit zodat alles netjes naast elkaar valt. 
+
+voorts moeten de letters van de a de styl hebben: font-family: 'Source Sans Pro', sans-serif; en font-size: 14px volgens de google inspector. Ook hover kleur veranderd.
+
+Voorts heb ik nog iets anders aangepast; netninja had alle anchor tags ingesloten in LI's (in de HTML file), dus de LI's waren de flex elementen, maar ik heb gezien in de inspector van google dat webflow alle anchor tags direct heeft gezet binnen de UL. Het probleem is dat als je LI tags gebruikt, dat dan alle LI elementen een bepaalde vastgestelde breedte hebben, en niet de breedte hebben van de tekst. Als je uitgaat van de breedte van de tekst ziet het er veel natuurlijker uit, zo heeft webflow het ook gedaan. Dus ik heb de anchor tags nu flex elementen gemaakt, ze een beetje left en rith margin gegeven zodat ze niet te dicht op elkaar zitten, er voor gezorgd dat justify content op right staat (op UL niveau), en dan gaat dus de UL social mooi naar rechts
+------------------------------------------------------------------------
+*/
+
+*{
+    font-family: verdana;
+    margin: 0;
+}
+
+nav.hayes-menu {
+    padding-left: 10px;
+    padding-right: 10px;
+    overflow: visible;
+}
+
+.hayes-wrapper{
+    width: 100%;
+    margin: 0 auto;
+}
+
+/* menu base styles */
+
+.hayes-wrapper nav {
+    background: #fff;
+    position: fixed;
+    width: 100%;
+    margin-left: 2px;
+    overflow: visible;
+    
+    
+}
+
+ .hayes-wrapper nav ul {
+     list-style-type: none;
+     padding: 0;
+ }
+
+ .ul1 {
+     margin-bottom: 0px;
+ }
+ 
+/* Mobile style */
+
+.ul2 a {
+    height: 30spx;
+    overflow: visible;
+}
+
+/*
+ #stylingofulfornav {
+    list-style-type: none;
+     padding: 0;
+ }
+ */
+
+ .hayes-menu a {
+    font-family: 'Source Sans Pro', sans-serif;
+    font-size: 14px;
+     text-decoration: none;
+     color: #837f7f;
+     display: block;
+     padding: 10px;
+ }
+
+ .hayes-menu a:hover {
+     color: #e78094;
+ }
+/* social menu base styles */
+
+
+.ul2 a {
+    text-indent: 0px;
+}
+.ul2 {
+     
+     margin: 0 auto;
+ }
+
+
+/* flex styles 
+
+nav ul.ul2 {
+    flex: 1 1 0;
+    display: flex;
+}
+
+nav ul.ul2 li {
+    flex: 1 1 0;
+}
+*/
+
+@media screen and (min-width: 900px) {
+
+    .hayes-menu ul {
+        display: flex;
+       /* justify-content: end;*/
+        margin-bottom: 0px;
+    }
+/*
+    .hayes-wrapper nav li {
+        flex: 1 1 0;
+    }
+*/
+
+    .hayes-menu {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 75.03px;
+    }
+
+    .ul2 {
+        margin: 0;
+    }
+    
+    .ul2 a {
+        color: #837f7f;
+        text-align: end;
+    }
+
+    .ul2 {
+        flex: 1 1 0;
+        display: flex;
+        justify-content: right;
+    }
+    
+    .ul2 a {
+        margin-left: 25px;
+        margin-right: 0px; 
+    
+    }
+
+}
