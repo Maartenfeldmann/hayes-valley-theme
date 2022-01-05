@@ -63,6 +63,8 @@ add_action('wp_enqueue_scripts', 'hayesvalley_register_scripts');
 
 // add a new product as a post_type Cars
 
+/*
+
 function my_first_post_type(){
 
     $args = array(
@@ -85,13 +87,37 @@ function my_first_post_type(){
     
 add_action('init', 'my_first_post_type');
 
+*/
+
+function my_first_post_type(){
+
+    $args = array(
+        'labels' => array(
+            'name' => 'Projects',
+            'singular_name' => 'Project'
+        
+        ),
+        'hierarchical' => true,
+        'public' => true,
+        'has_archive' => true,
+        'menu_icon' => 'dashicons-hammer',
+        'supports' => array('title', 'editor', 'comments', 'revisions', 'trackbacks', 'author', 'excerpt', 'page-attributes', 'thumbnail', 'custom-fields','post-formats'),
+
+    );
+
+    register_post_type('projects', $args);
+
+}
+    
+add_action('init', 'my_first_post_type');
+
 // add taxonomy to the new product Cars
 
 function my_first_taxonomy() {
     $args = array(
         'labels' => array(
-            'name' => 'Brands',
-            'singular_name' => 'Brand'
+            'name' => 'Types',
+            'singular_name' => 'Type'
         
         ),
         'public' => true,
@@ -99,7 +125,7 @@ function my_first_taxonomy() {
     
     );
 
-    register_taxonomy('brands', array('cars'), $args);
+    register_taxonomy('types', array('projects'), $args);
 }
 
 add_action('init', 'my_first_taxonomy');
