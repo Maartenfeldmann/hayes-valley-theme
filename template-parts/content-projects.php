@@ -3,7 +3,8 @@
 <h1><?php the_title(); ?></h1>
 <p><?php the_content(); ?></p>
 <p><?php the_post_thumbnail('blog-post-hard-v3'); ?></p>
-<?php the_date() ?>
+<br><a href="<?php the_permalink();?>">Ga naar project! En Roos is geil!</a>
+
 
 </div>
 

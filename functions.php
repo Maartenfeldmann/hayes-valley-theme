@@ -111,7 +111,31 @@ function my_first_post_type(){
     
 add_action('init', 'my_first_post_type');
 
-// add taxonomy to the new product Cars
+// add another CPT for the site, team:
+    
+function my_second_post_type(){
+
+    $args = array(
+        'labels' => array(
+            'name' => 'Team',
+            'singular_name' => 'Team-Member'
+        
+        ),
+        'hierarchical' => true,
+        'public' => true,
+        'has_archive' => true,
+        'menu_icon' => 'dashicons-businessperson',
+        'supports' => array('title', 'editor', 'comments', 'revisions', 'trackbacks', 'author', 'excerpt', 'page-attributes', 'thumbnail', 'custom-fields','post-formats'),
+
+    );
+
+    register_post_type('team', $args);
+
+}
+    
+add_action('init', 'my_second_post_type');
+
+// add taxonomy to projects
 
 function my_first_taxonomy() {
     $args = array(
